@@ -1,0 +1,94 @@
+{
+  "name": "referencex",
+  "displayName": "ReferenceX",
+  "description": "Shows inline reference counts for TypeScript/JavaScript functions, methods, and classes",
+  "version": "0.1.0",
+  "publisher": "Peckage",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Peckage/referencex"
+  },
+  "bugs": {
+    "url": "https://github.com/Peckage/referencex/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "javascript",
+    "references",
+    "codelens",
+    "productivity"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:javascript",
+    "onLanguage:typescriptreact",
+    "onLanguage:javascriptreact"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "ReferenceX",
+      "properties": {
+        "referencex.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable/disable ReferenceX CodeLens"
+        },
+        "referencex.showZeroReferences": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show CodeLens for symbols with zero references"
+        },
+        "referencex.excludeTests": {
+          "type": "boolean",
+          "default": false,
+          "description": "Exclude test files from reference counting"
+        },
+        "referencex.decorateWithColor": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use color coding for different reference counts"
+        },
+        "referencex.displayMode": {
+          "type": "string",
+          "enum": ["codelens", "inline"],
+          "default": "inline",
+          "enumDescriptions": [
+            "Show references above the line (CodeLens)",
+            "Show references at the end of the line (inline)"
+          ],
+          "description": "How to display reference counts"
+        },
+        "referencex.position": {
+          "type": "string",
+          "enum": ["above", "inline"],
+          "default": "above",
+          "description": "Position of the CodeLens (above or inline with the symbol)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  }
+}
