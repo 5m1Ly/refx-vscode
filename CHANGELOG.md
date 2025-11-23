@@ -2,6 +2,12 @@
 
 All notable changes to the ReferenceX extension will be documented in this file.
 
+## [0.2.2] - 2025-11-23
+
+### Added
+- New setting `referencex.showVariables` to show reference counts for variables and constants (including exports)
+- Useful for tracking usage of exported constants and configuration values
+
 ## [0.2.1] - 2025-11-23
 
 ### Added

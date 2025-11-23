@@ -5,6 +5,7 @@ A VS Code extension that shows inline reference counts for TypeScript/JavaScript
 ## ✨ Features
 
 - **📊 Inline Reference Counts** - See how many times each symbol is referenced, right where it's defined
+- **📦 Variable Tracking** - Optionally track references for variables and constants (including exports)
 - **🎨 Two Display Modes** - Choose between inline (end of line) or CodeLens (above line) display
 - **🔍 Color-Coded Indicators** - Visual feedback based on usage frequency
 - **⚡ Real-Time Updates** - Automatically refreshes as you code
@@ -76,6 +77,7 @@ Customize ReferenceX to match your workflow:
 | `referencex.displayMode` | string | `"inline"` | Display mode: `"inline"` or `"codelens"` |
 | `referencex.showZeroReferences` | boolean | `true` | Show indicators for unused code |
 | `referencex.onlyShowZeroReferences` | boolean | `false` | Only show unused code (0 refs), hide all others |
+| `referencex.showVariables` | boolean | `false` | Show references for variables and constants (including exports) |
 | `referencex.decorateWithColor` | boolean | `true` | Use color-coded emojis |
 | `referencex.excludeTests` | boolean | `false` | Exclude test files from reference counting |
 | `referencex.colors.zero` | string | `#858585` | Color for 0 references (gray) |
@@ -92,6 +94,7 @@ Customize ReferenceX to match your workflow:
   "referencex.decorateWithColor": true,
   "referencex.showZeroReferences": true,
   "referencex.onlyShowZeroReferences": false,
+  "referencex.showVariables": false,
   "referencex.excludeTests": false,
   "referencex.colors.zero": "#858585",
   "referencex.colors.lots": "#FF6B6B"
@@ -124,6 +127,7 @@ Customize ReferenceX to match your workflow:
 - Interfaces
 - Type aliases
 - Constructors
+- Variables and constants (when `showVariables` is enabled)
 
 ## 🎯 Use Cases
 

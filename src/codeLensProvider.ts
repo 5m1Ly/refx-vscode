@@ -5,6 +5,7 @@ interface CodeLensConfig {
     showZeroReferences: boolean;
     onlyShowZeroReferences: boolean;
     excludeTests: boolean;
+    showVariables: boolean;
     decorateWithColor: boolean;
     displayMode: 'codelens' | 'inline';
     colors: {
@@ -73,6 +74,7 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
             showZeroReferences: config.get('showZeroReferences', true),
             onlyShowZeroReferences: config.get('onlyShowZeroReferences', false),
             excludeTests: config.get('excludeTests', false),
+            showVariables: config.get('showVariables', false),
             decorateWithColor: config.get('decorateWithColor', true),
             displayMode: config.get('displayMode', 'inline') as 'codelens' | 'inline',
             colors: {
@@ -91,10 +93,6 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
                path.includes('.spec.') || 
                path.includes('__tests__') ||
                path.includes('/tests/');
-    }
-
-    private isSupportedLanguage(languageId: string): boolean {
-        return ['typescript', 'javascript', 'typescriptreact', 'javascriptreact'].includes(languageId);
     }
 
     public provideCodeLenses(document: vscode.TextDocument, token: vscode.CancellationToken): vscode.CodeLens[] | Thenable<vscode.CodeLens[]> {
@@ -123,6 +121,14 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
             { regex: /^\s*(export\s+)?(const|let|var)\s+(\w+)\s*=\s*(async\s+)?\([^)]*\)\s*=>/, type: 'function' },
             { regex: /^\s*(public|private|protected)?\s*(static\s+)?(async\s+)?(get\s+|set\s+)?(\w+)\s*(<[^>]*>)?\s*\([^)]*\)\s*[:{]/, type: 'method' },
         ];
+
+        // Add variable patterns if showVariables is enabled
+        if (config.showVariables) {
+            // Match const/let/var but exclude arrow functions (already matched above)
+            patterns.push(
+                { regex: /^\s*(export\s+)?(const|let|var)\s+(\w+)\s*=\s*(?![^{]*=>)/, type: 'variable' }
+            );
+        }
 
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
@@ -213,7 +219,7 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
         const config = this.getConfig();
         
         // Only show inline decorations if in inline mode
-        if (!config.enabled || config.displayMode !== 'inline' || !this.isSupportedLanguage(editor.document.languageId)) {
+        if (!config.enabled || config.displayMode !== 'inline') {
             editor.setDecorations(this.decorationType, []);
             return;
         }
@@ -236,6 +242,14 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
             { regex: /^\s*(export\s+)?(const|let|var)\s+(\w+)\s*=\s*(async\s+)?\([^)]*\)\s*=>/, type: 'function' },
             { regex: /^\s*(public|private|protected)?\s*(static\s+)?(async\s+)?(get\s+|set\s+)?(\w+)\s*(<[^>]*>)?\s*\(/, type: 'method' },
         ];
+
+        // Add variable patterns if showVariables is enabled
+        if (config.showVariables) {
+            // Match const/let/var but exclude arrow functions (already matched above)
+            patterns.push(
+                { regex: /^\s*(export\s+)?(const|let|var)\s+(\w+)\s*=\s*(?![^{]*=>)/, type: 'variable' }
+            );
+        }
 
         try {
             const symbols = await vscode.commands.executeCommand<vscode.DocumentSymbol[]>(

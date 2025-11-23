@@ -2,7 +2,7 @@
   "name": "referencex",
   "displayName": "ReferenceX",
   "description": "Shows inline reference counts for TypeScript/JavaScript functions, methods, and classes",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "Peckage",
   "icon": "icon.png",
   "repository": {
@@ -56,6 +56,11 @@
           "type": "boolean",
           "default": false,
           "description": "Exclude test files from reference counting"
+        },
+        "referencex.showVariables": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show references for variables and constants (including exports)"
         },
         "referencex.decorateWithColor": {
           "type": "boolean",
