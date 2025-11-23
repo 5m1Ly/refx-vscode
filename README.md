@@ -1,48 +1,143 @@
 # ReferenceX
 
-A VS Code extension that shows inline CodeLens annotations displaying the number of references for TypeScript/JavaScript functions, methods, and classes.
+A VS Code extension that shows inline reference counts for TypeScript/JavaScript functions, methods, and classes - helping you identify unused code and understand your codebase at a glance.
 
-## Features
+## ✨ Features
 
-- 📊 Shows reference count above each function/method/class definition
-- 🔍 Clickable to view all references
-- ⚡ Real-time updates as code changes
-- 🎨 Gray styling for unused code (0 references)
-- ⚙️ Configuration option to enable/disable
+- **📊 Inline Reference Counts** - See how many times each symbol is referenced, right where it's defined
+- **🎨 Two Display Modes** - Choose between inline (end of line) or CodeLens (above line) display
+- **🔍 Color-Coded Indicators** - Visual feedback based on usage frequency
+- **⚡ Real-Time Updates** - Automatically refreshes as you code
+- **🎯 Smart Detection** - Works with functions, methods, classes, interfaces, and type aliases
+- **🔗 Clickable References** - Click any count to view all references
+- **⚙️ Highly Customizable** - Configure display, colors, and behavior to your preference
 
-## Usage
+## 🎬 Display Modes
 
-Once installed, ReferenceX will automatically show reference counts above your TypeScript/JavaScript functions, methods, and classes:
+### Inline Mode (Default)
+Reference counts appear at the end of the line - clean and unobtrusive:
 
 ```typescript
-// 5 references
-function myFunction() {
-  // ...
+function calculateTotal(items: Item[]) {  ● 12 refs
+  return items.reduce((sum, item) => sum + item.price, 0);
 }
 
-// 0 references
-class UnusedClass {
-  // ...
+class UserService {  ● 5 refs
+  async getUser(id: string) {  ● 8 refs
+    // implementation
+  }
+}
+
+const unusedHelper = () => {  ○ 0 refs
+  // This function is never used!
+};
+```
+
+### CodeLens Mode
+Traditional CodeLens display above each symbol:
+
+```typescript
+🟢 ● 12 references
+function calculateTotal(items: Item[]) {
+  return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+🔵 ● 5 references
+class UserService {
+  🟡 ● 8 references
+  async getUser(id: string) {
+    // implementation
+  }
+}
+
+⚪ ○ 0 references
+const unusedHelper = () => {
+  // This function is never used!
+};
+```
+
+## 🎨 Color Coding
+
+When enabled, reference counts are color-coded for quick visual feedback:
+
+- ⚪ **0 references** - Unused code (gray)
+- 🔵 **1 reference** - Single usage (blue)
+- 🟢 **2-4 references** - Normal usage (green)
+- 🟡 **5-9 references** - Popular (yellow)
+- 🔥 **10+ references** - Heavily used (orange/red)
+
+## ⚙️ Configuration
+
+Customize ReferenceX to match your workflow:
+
+| Setting | Type | Default | Description |
+|---------|------|---------|-------------|
+| `referencex.enabled` | boolean | `true` | Enable/disable the extension |
+| `referencex.displayMode` | string | `"inline"` | Display mode: `"inline"` or `"codelens"` |
+| `referencex.showZeroReferences` | boolean | `true` | Show indicators for unused code |
+| `referencex.decorateWithColor` | boolean | `true` | Use color-coded emojis |
+| `referencex.excludeTests` | boolean | `false` | Exclude test files from reference counting |
+
+### Example Configuration
+
+```json
+{
+  "referencex.displayMode": "inline",
+  "referencex.decorateWithColor": true,
+  "referencex.showZeroReferences": true,
+  "referencex.excludeTests": false
 }
 ```
 
-Click on any reference count to see all references in the references panel.
+## 🚀 Usage
 
-## Configuration
+1. Install the extension
+2. Open any TypeScript or JavaScript file
+3. Reference counts will automatically appear next to your functions, classes, and methods
+4. **Click** on any reference count to view all references in the references panel
+5. Configure settings via VS Code preferences (`Ctrl/Cmd + ,` → search "ReferenceX")
 
-- `referencex.enabled`: Enable/disable ReferenceX CodeLens (default: `true`)
+## 📋 Supported Languages
 
-## Requirements
+- TypeScript (`.ts`)
+- JavaScript (`.js`)
+- TypeScript React (`.tsx`)
+- JavaScript React (`.jsx`)
+
+## 🔍 What Gets Detected
+
+- Functions (regular and arrow)
+- Class declarations
+- Methods (including getters/setters)
+- Interfaces
+- Type aliases
+- Constructors
+
+## 🎯 Use Cases
+
+- **Find Dead Code** - Quickly identify unused functions and classes
+- **Refactoring** - Understand impact before making changes
+- **Code Review** - Spot over-used or under-used code patterns
+- **Learning Codebases** - See which functions are central to the project
+- **API Design** - Identify heavily-used public APIs
+
+## 🛠️ Requirements
 
 - VS Code 1.85.0 or higher
+- TypeScript/JavaScript language support (built into VS Code)
 
-## Development
-
-1. Clone the repository
-2. Run `npm install`
-3. Run `npm run compile`
-4. Press F5 to open a new VS Code window with the extension loaded
-
-## License
+## 📝 License
 
 MIT
+
+## 🐛 Issues & Feedback
+
+Found a bug or have a feature request? [Open an issue on GitHub](https://github.com/Peckage/referencex/issues)
+
+## 🙏 Credits
+
+Created by [Peckage](https://github.com/Peckage)
+
+---
+
+**Enjoy cleaner, more maintainable code with ReferenceX!** ⭐
