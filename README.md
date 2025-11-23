@@ -75,8 +75,14 @@ Customize ReferenceX to match your workflow:
 | `referencex.enabled` | boolean | `true` | Enable/disable the extension |
 | `referencex.displayMode` | string | `"inline"` | Display mode: `"inline"` or `"codelens"` |
 | `referencex.showZeroReferences` | boolean | `true` | Show indicators for unused code |
+| `referencex.onlyShowZeroReferences` | boolean | `false` | Only show unused code (0 refs), hide all others |
 | `referencex.decorateWithColor` | boolean | `true` | Use color-coded emojis |
 | `referencex.excludeTests` | boolean | `false` | Exclude test files from reference counting |
+| `referencex.colors.zero` | string | `#858585` | Color for 0 references (gray) |
+| `referencex.colors.one` | string | `#4EC9B0` | Color for 1 reference (cyan) |
+| `referencex.colors.few` | string | `#4EC9B0` | Color for 2-4 references (cyan) |
+| `referencex.colors.many` | string | `#DCDCAA` | Color for 5-9 references (yellow) |
+| `referencex.colors.lots` | string | `#CE9178` | Color for 10+ references (orange) |
 
 ### Example Configuration
 
@@ -85,9 +91,15 @@ Customize ReferenceX to match your workflow:
   "referencex.displayMode": "inline",
   "referencex.decorateWithColor": true,
   "referencex.showZeroReferences": true,
-  "referencex.excludeTests": false
+  "referencex.onlyShowZeroReferences": false,
+  "referencex.excludeTests": false,
+  "referencex.colors.zero": "#858585",
+  "referencex.colors.lots": "#FF6B6B"
 }
 ```
+
+> **Tip:** Set `onlyShowZeroReferences: true` to only highlight dead code!  
+> **Tip:** Customize colors to match your theme using any hex color code.
 
 ## 🚀 Usage
 

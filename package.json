@@ -46,6 +46,11 @@
           "default": true,
           "description": "Show CodeLens for symbols with zero references"
         },
+        "referencex.onlyShowZeroReferences": {
+          "type": "boolean",
+          "default": false,
+          "description": "Only show unused code (0 references), hide all others"
+        },
         "referencex.excludeTests": {
           "type": "boolean",
           "default": false,
@@ -66,11 +71,30 @@
           ],
           "description": "How to display reference counts"
         },
-        "referencex.position": {
+        "referencex.colors.zero": {
           "type": "string",
-          "enum": ["above", "inline"],
-          "default": "above",
-          "description": "Position of the CodeLens (above or inline with the symbol)"
+          "default": "#858585",
+          "description": "Color for 0 references (unused code)"
+        },
+        "referencex.colors.one": {
+          "type": "string",
+          "default": "#4EC9B0",
+          "description": "Color for 1 reference"
+        },
+        "referencex.colors.few": {
+          "type": "string",
+          "default": "#4EC9B0",
+          "description": "Color for 2-4 references"
+        },
+        "referencex.colors.many": {
+          "type": "string",
+          "default": "#DCDCAA",
+          "description": "Color for 5-9 references"
+        },
+        "referencex.colors.lots": {
+          "type": "string",
+          "default": "#CE9178",
+          "description": "Color for 10+ references"
         }
       }
     }

@@ -3,9 +3,17 @@ import * as vscode from 'vscode';
 interface CodeLensConfig {
     enabled: boolean;
     showZeroReferences: boolean;
+    onlyShowZeroReferences: boolean;
     excludeTests: boolean;
     decorateWithColor: boolean;
     displayMode: 'codelens' | 'inline';
+    colors: {
+        zero: string;
+        one: string;
+        few: string;
+        many: string;
+        lots: string;
+    };
 }
 
 export class ReferenceLensProvider implements vscode.CodeLensProvider {
@@ -63,9 +71,17 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
         return {
             enabled: config.get('enabled', true),
             showZeroReferences: config.get('showZeroReferences', true),
+            onlyShowZeroReferences: config.get('onlyShowZeroReferences', false),
             excludeTests: config.get('excludeTests', false),
             decorateWithColor: config.get('decorateWithColor', true),
-            displayMode: config.get('displayMode', 'inline') as 'codelens' | 'inline'
+            displayMode: config.get('displayMode', 'inline') as 'codelens' | 'inline',
+            colors: {
+                zero: config.get('colors.zero', '#858585'),
+                one: config.get('colors.one', '#4EC9B0'),
+                few: config.get('colors.few', '#4EC9B0'),
+                many: config.get('colors.many', '#DCDCAA'),
+                lots: config.get('colors.lots', '#CE9178')
+            }
         };
     }
 
@@ -166,6 +182,10 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
                 return codeLens;
             }
 
+            if (displayCount > 0 && config.onlyShowZeroReferences) {
+                return codeLens;
+            }
+
             const { title } = this.formatReferenceText(displayCount, symbol.kind, config);
             
             codeLens.command = {
@@ -251,6 +271,10 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
                                 break;
                             }
 
+                            if (displayCount > 0 && config.onlyShowZeroReferences) {
+                                break;
+                            }
+
                             const { title, color } = this.formatReferenceText(displayCount, symbol.kind, config);
                             
                             const decoration: vscode.DecorationOptions = {
@@ -281,27 +305,27 @@ export class ReferenceLensProvider implements vscode.CodeLensProvider {
     private formatReferenceText(count: number, symbolKind: vscode.SymbolKind, config: CodeLensConfig): { title: string, color: string } {
         let icon: string;
         let colorIndicator = '';
-        let color = '#858585';
+        let color: string;
 
         if (count === 0) {
             icon = '○';
-            color = '#858585';
+            color = config.colors.zero;
             colorIndicator = config.decorateWithColor ? '⚪ ' : '';
         } else if (count === 1) {
             icon = '●';
-            color = '#4EC9B0';
+            color = config.colors.one;
             colorIndicator = config.decorateWithColor ? '🔵 ' : '';
         } else if (count < 5) {
             icon = '●';
-            color = '#4EC9B0';
+            color = config.colors.few;
             colorIndicator = config.decorateWithColor ? '🟢 ' : '';
         } else if (count < 10) {
             icon = '●';
-            color = '#DCDCAA';
+            color = config.colors.many;
             colorIndicator = config.decorateWithColor ? '🟡 ' : '';
         } else {
             icon = '🔥';
-            color = '#CE9178';
+            color = config.colors.lots;
             colorIndicator = config.decorateWithColor ? '🔥 ' : '';
         }
 
