@@ -2,18 +2,18 @@
 
 A VS Code extension that shows inline reference counts for TypeScript/JavaScript functions, methods, and classes - helping you identify unused code and understand your codebase at a glance.
 
-## ✨ Features
+## Features
 
-- **📊 Inline Reference Counts** - See how many times each symbol is referenced, right where it's defined
-- **📦 Variable Tracking** - Optionally track references for variables and constants (including exports)
-- **🎨 Two Display Modes** - Choose between inline (end of line) or CodeLens (above line) display
-- **🔍 Color-Coded Indicators** - Visual feedback based on usage frequency
-- **⚡ Real-Time Updates** - Automatically refreshes as you code
-- **🎯 Smart Detection** - Works with functions, methods, classes, interfaces, and type aliases
-- **🔗 Clickable References** - Click any count to view all references
-- **⚙️ Highly Customizable** - Configure display, colors, and behavior to your preference
+- **Inline Reference Counts** - See how many times each symbol is referenced, right where it's defined
+- **Variable Tracking** - Optionally track references for variables and constants (including exports)
+- **Two Display Modes** - Choose between inline (end of line) or CodeLens (above line) display
+- **Color-Coded Indicators** - Visual feedback based on usage frequency
+- **Real-Time Updates** - Automatically refreshes as you code
+- **Smart Detection** - Works with functions, methods, classes, interfaces, and type aliases
+- **Clickable References** - Click any count to view all references
+- **Highly Customizable** - Configure display, colors, and behavior to your preference
 
-## 🎬 Display Modes
+## Display Modes
 
 ### Inline Mode (Default)
 Reference counts appear at the end of the line - clean and unobtrusive:
@@ -38,36 +38,36 @@ const unusedHelper = () => {  ○ 0 refs
 Traditional CodeLens display above each symbol:
 
 ```typescript
-🟢 ● 12 references
+● 12 references
 function calculateTotal(items: Item[]) {
   return items.reduce((sum, item) => sum + item.price, 0);
 }
 
-🔵 ● 5 references
+● 5 references
 class UserService {
-  🟡 ● 8 references
+  ● 8 references
   async getUser(id: string) {
     // implementation
   }
 }
 
-⚪ ○ 0 references
+○ 0 references
 const unusedHelper = () => {
   // This function is never used!
 };
 ```
 
-## 🎨 Color Coding
+## Color Coding
 
 When enabled, reference counts are color-coded for quick visual feedback:
 
-- ⚪ **0 references** - Unused code (gray)
-- 🔵 **1 reference** - Single usage (blue)
-- 🟢 **2-4 references** - Normal usage (green)
-- 🟡 **5-9 references** - Popular (yellow)
-- 🔥 **10+ references** - Heavily used (orange/red)
+- **0 references** - Unused code (gray)
+- **1 reference** - Single usage (blue)
+- **2-4 references** - Normal usage (green)
+- **5-9 references** - Popular (yellow)
+- **10+ references** - Heavily used (orange/red)
 
-## ⚙️ Configuration
+## Configuration
 
 Customize ReferenceX to match your workflow:
 
@@ -104,22 +104,22 @@ Customize ReferenceX to match your workflow:
 > **Tip:** Set `onlyShowZeroReferences: true` to only highlight dead code!  
 > **Tip:** Customize colors to match your theme using any hex color code.
 
-## 🚀 Usage
+## Usage
 
 1. Install the extension
 2. Open any TypeScript or JavaScript file
 3. Reference counts will automatically appear next to your functions, classes, and methods
-4. **Click** on any reference count to view all references in the references panel
+4. Click on any reference count to view all references in the references panel
 5. Configure settings via VS Code preferences (`Ctrl/Cmd + ,` → search "ReferenceX")
 
-## 📋 Supported Languages
+## Supported Languages
 
 - TypeScript (`.ts`)
 - JavaScript (`.js`)
 - TypeScript React (`.tsx`)
 - JavaScript React (`.jsx`)
 
-## 🔍 What Gets Detected
+## What Gets Detected
 
 - Functions (regular and arrow)
 - Class declarations
@@ -129,7 +129,7 @@ Customize ReferenceX to match your workflow:
 - Constructors
 - Variables and constants (when `showVariables` is enabled)
 
-## 🎯 Use Cases
+## Use Cases
 
 - **Find Dead Code** - Quickly identify unused functions and classes
 - **Refactoring** - Understand impact before making changes
@@ -137,23 +137,23 @@ Customize ReferenceX to match your workflow:
 - **Learning Codebases** - See which functions are central to the project
 - **API Design** - Identify heavily-used public APIs
 
-## 🛠️ Requirements
+## Requirements
 
 - VS Code 1.85.0 or higher
 - TypeScript/JavaScript language support (built into VS Code)
 
-## 📝 License
+## License
 
 MIT
 
-## 🐛 Issues & Feedback
+## Issues & Feedback
 
 Found a bug or have a feature request? [Open an issue on GitHub](https://github.com/Peckage/referencex/issues)
 
-## 🙏 Credits
+## Credits
 
 Created by [Peckage](https://github.com/Peckage)
 
 ---
 
-**Enjoy cleaner, more maintainable code with ReferenceX!** ⭐
+**Enjoy cleaner, more maintainable code with ReferenceX!**

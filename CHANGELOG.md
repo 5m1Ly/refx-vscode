@@ -2,6 +2,11 @@
 
 All notable changes to the ReferenceX extension will be documented in this file.
 
+## [0.2.3] - 2025-11-24
+
+### Changed
+- Cleaned up README documentation with professional formatting (removed emojis)
+
 ## [0.2.2] - 2025-11-23
 
 ### Added
