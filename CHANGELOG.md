@@ -2,6 +2,11 @@
 
 All notable changes to the ReferenceX extension will be documented in this file.
 
+## [0.2.4] - 2025-11-25
+
+### Changed
+- Updated extension icon with improved design
+
 ## [0.2.3] - 2025-11-24
 
 ### Changed
