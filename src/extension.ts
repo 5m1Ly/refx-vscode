@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { ReferenceLensProvider } from './codeLensProvider';
+import { UnusedCodeScanner } from './unusedCodeScanner';
 
 export function activate(context: vscode.ExtensionContext) {
     console.log('ReferenceX extension is now active');
@@ -28,6 +29,14 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Add provider to subscriptions for disposal
     context.subscriptions.push(provider);
+
+    // Register unused code scanner command
+    const scanner = new UnusedCodeScanner();
+    const scanCommand = vscode.commands.registerCommand(
+        'referencex.scanUnusedCode',
+        () => scanner.showUnusedCodeOverview()
+    );
+    context.subscriptions.push(scanCommand);
 }
 
 export function deactivate() {}

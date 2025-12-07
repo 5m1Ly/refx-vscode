@@ -2,6 +2,15 @@
 
 All notable changes to the ReferenceX extension will be documented in this file.
 
+## [0.3.0] - 2025-12-07
+
+### Added
+- **Workspace Scanner**: New command `ReferenceX: Scan for Unused Code` that scans your entire workspace
+- Quick pick overview showing all files with unused symbols
+- Instant navigation to any unused function, method, class, or interface
+- Respects `excludeTests` and `showVariables` settings
+- Progress indicator during workspace scan
+
 ## [0.2.4] - 2025-11-25
 
 ### Changed

@@ -5,6 +5,7 @@ A VS Code extension that shows inline reference counts for TypeScript/JavaScript
 ## Features
 
 - **Inline Reference Counts** - See how many times each symbol is referenced, right where it's defined
+- **Workspace Scanner** - Scan entire workspace for unused code with instant overview and navigation
 - **Variable Tracking** - Optionally track references for variables and constants (including exports)
 - **Two Display Modes** - Choose between inline (end of line) or CodeLens (above line) display
 - **Color-Coded Indicators** - Visual feedback based on usage frequency
@@ -110,7 +111,8 @@ Customize ReferenceX to match your workflow:
 2. Open any TypeScript or JavaScript file
 3. Reference counts will automatically appear next to your functions, classes, and methods
 4. Click on any reference count to view all references in the references panel
-5. Configure settings via VS Code preferences (`Ctrl/Cmd + ,` → search "ReferenceX")
+5. Use **Command Palette** (`Ctrl/Cmd + Shift + P`) → `ReferenceX: Scan for Unused Code` to get workspace-wide overview
+6. Configure settings via VS Code preferences (`Ctrl/Cmd + ,` → search "ReferenceX")
 
 ## Supported Languages
 

@@ -2,7 +2,7 @@
   "name": "referencex",
   "displayName": "ReferenceX",
   "description": "Shows inline reference counts for TypeScript/JavaScript functions, methods, and classes",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "publisher": "Peckage",
   "icon": "icon.png",
   "repository": {
@@ -34,6 +34,13 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "referencex.scanUnusedCode",
+        "title": "Scan for Unused Code",
+        "category": "ReferenceX"
+      }
+    ],
     "configuration": {
       "title": "ReferenceX",
       "properties": {
