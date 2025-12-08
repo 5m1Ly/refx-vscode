@@ -11,7 +11,7 @@ A VS Code extension that shows inline reference counts for TypeScript/JavaScript
 - **Color-Coded Indicators** - Visual feedback based on usage frequency
 - **Real-Time Updates** - Automatically refreshes as you code
 - **Smart Detection** - Works with functions, methods, classes, interfaces, and type aliases
-- **Clickable References** - Click any count to view all references
+- **Clickable References** - Click any count in CodeLens mode to view all references
 - **Highly Customizable** - Configure display, colors, and behavior to your preference
 
 ## Display Modes
@@ -36,17 +36,17 @@ const unusedHelper = () => {  ○ 0 refs
 ```
 
 ### CodeLens Mode
-Traditional CodeLens display above each symbol:
+Traditional CodeLens display above each symbol - clickable to view all references:
 
 ```typescript
-● 12 references
+● 12 references  ← Click to see all references
 function calculateTotal(items: Item[]) {
   return items.reduce((sum, item) => sum + item.price, 0);
 }
 
-● 5 references
+● 5 references  ← Click to see all references
 class UserService {
-  ● 8 references
+  ● 8 references  ← Click to see all references
   async getUser(id: string) {
     // implementation
   }
@@ -57,6 +57,8 @@ const unusedHelper = () => {
   // This function is never used!
 };
 ```
+
+> **Note:** In inline mode, decorations are not clickable due to VS Code limitations. Use CodeLens mode for clickable references, or use the workspace scanner command to navigate to unused code.
 
 ## Color Coding
 
@@ -110,7 +112,7 @@ Customize ReferenceX to match your workflow:
 1. Install the extension
 2. Open any TypeScript or JavaScript file
 3. Reference counts will automatically appear next to your functions, classes, and methods
-4. Click on any reference count to view all references in the references panel
+4. In CodeLens mode, click on any reference count to view all references in the references panel
 5. Use **Command Palette** (`Ctrl/Cmd + Shift + P`) → `ReferenceX: Scan for Unused Code` to get workspace-wide overview
 6. Configure settings via VS Code preferences (`Ctrl/Cmd + ,` → search "ReferenceX")
 

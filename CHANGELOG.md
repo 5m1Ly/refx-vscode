@@ -2,6 +2,13 @@
 
 All notable changes to the ReferenceX extension will be documented in this file.
 
+## [0.3.1] - 2025-12-08
+
+### Fixed
+- Clarified in documentation that inline decorations are not clickable (VS Code limitation)
+- Updated README to explain that clickable references only work in CodeLens mode
+- Added note about using workspace scanner for navigation in inline mode
+
 ## [0.3.0] - 2025-12-07
 
 ### Added
