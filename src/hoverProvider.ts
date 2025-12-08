@@ -108,10 +108,12 @@ export class ReferenceHoverProvider implements vscode.HoverProvider {
                 markdown.appendMarkdown(`**📍 ${displayCount} ${refText}**\n\n`);
                 
                 // Create clickable command link
-                const args = [document.uri, symbol.selectionRange.start, locations];
-                const commandUri = vscode.Uri.parse(
-                    `command:editor.action.showReferences?${encodeURIComponent(JSON.stringify(args))}`
-                );
+                const args = encodeURIComponent(JSON.stringify([
+                    document.uri,
+                    symbol.selectionRange.start,
+                    locations
+                ]));
+                const commandUri = `command:editor.action.showReferences?${args}`;
                 markdown.appendMarkdown(`[View all references](${commandUri})\n\n`);
                 
                 // Show first few reference locations

@@ -2,6 +2,11 @@
 
 All notable changes to the ReferenceX extension will be documented in this file.
 
+## [0.5.1] - 2025-12-08
+
+### Fixed
+- Fixed "View all references" link not working in hover tooltips
+
 ## [0.5.0] - 2025-12-08
 
 ### Added
