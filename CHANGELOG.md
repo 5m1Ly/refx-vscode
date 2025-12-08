@@ -2,6 +2,31 @@
 
 All notable changes to the ReferenceX extension will be documented in this file.
 
+## [0.5.0] - 2025-12-08
+
+### Added
+- **Dependency Graph Visualization**: New sidebar tree view showing symbol dependencies
+- **Bidirectional Tracking**: See both "Used By" (who references this) and "Dependencies" (what this uses)
+- **Impact Analysis**: Understand what would be affected if a symbol is deleted
+- **Interactive Navigation**: Click any item in the tree to jump to that location
+- **Export to Mermaid**: Generate dependency diagrams for visualization
+- **Context Menu Integration**: Right-click any symbol → "Show Dependencies"
+- **File Grouping**: References organized by file for better overview
+
+### Fixed
+- Fixed hover tooltip showing icon syntax instead of proper icons
+
+## [0.4.0] - 2025-12-08
+
+### Added
+- **Dependency Graph Visualization**: New sidebar tree view showing symbol dependencies
+- **Bidirectional Tracking**: See both "Used By" (who references this) and "Dependencies" (what this uses)
+- **Impact Analysis**: Understand what would be affected if a symbol is deleted
+- **Interactive Navigation**: Click any item in the tree to jump to that location
+- **Export to Mermaid**: Generate dependency diagrams that can be visualized
+- **Context Menu Integration**: Right-click any symbol → "Show Dependencies"
+- **File Grouping**: References organized by file for better overview
+
 ## [0.4.0] - 2025-12-08
 
 ### Added

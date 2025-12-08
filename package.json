@@ -2,7 +2,7 @@
   "name": "referencex",
   "displayName": "ReferenceX",
   "description": "Shows inline reference counts for TypeScript/JavaScript functions, methods, and classes",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "publisher": "Peckage",
   "icon": "icon.png",
   "repository": {
@@ -38,9 +38,71 @@
       {
         "command": "referencex.scanUnusedCode",
         "title": "Scan for Unused Code",
-        "category": "ReferenceX"
+        "category": "ReferenceX",
+        "icon": "$(search)"
+      },
+      {
+        "command": "referencex.showDependencies",
+        "title": "Show Dependencies",
+        "category": "ReferenceX",
+        "icon": "$(type-hierarchy)"
+      },
+      {
+        "command": "referencex.exportMermaid",
+        "title": "Export Dependency Graph (Mermaid)",
+        "category": "ReferenceX",
+        "icon": "$(export)"
+      },
+      {
+        "command": "referencex.refreshDependencyTree",
+        "title": "Refresh Dependency Tree",
+        "category": "ReferenceX",
+        "icon": "$(refresh)"
       }
     ],
+    "views": {
+      "explorer": [
+        {
+          "id": "referencex.dependencyTree",
+          "name": "ReferenceX Dependencies",
+          "icon": "$(type-hierarchy)",
+          "contextualTitle": "Symbol Dependencies"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "referencex.refreshDependencyTree",
+          "when": "view == referencex.dependencyTree",
+          "group": "navigation"
+        },
+        {
+          "command": "referencex.exportMermaid",
+          "when": "view == referencex.dependencyTree",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "referencex.showDependencies",
+          "when": "editorLangId == typescript || editorLangId == javascript || editorLangId == typescriptreact || editorLangId == javascriptreact",
+          "group": "navigation@1"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "referencex.showDependencies",
+          "when": "editorLangId == typescript || editorLangId == javascript || editorLangId == typescriptreact || editorLangId == javascriptreact"
+        },
+        {
+          "command": "referencex.refreshDependencyTree"
+        },
+        {
+          "command": "referencex.exportMermaid"
+        }
+      ]
+    },
     "configuration": {
       "title": "ReferenceX",
       "properties": {

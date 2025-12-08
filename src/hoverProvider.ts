@@ -100,12 +100,12 @@ export class ReferenceHoverProvider implements vscode.HoverProvider {
             markdown.supportHtml = true;
 
             if (displayCount === 0) {
-                markdown.appendMarkdown(`$(warning) **Unused ${symbolType}**\n\n`);
+                markdown.appendMarkdown(`**⚠️ Unused ${symbolType}**\n\n`);
                 markdown.appendMarkdown(`No references found for \`${symbol.name}\`\n\n`);
                 markdown.appendMarkdown('_This code appears to be unused and could potentially be removed._');
             } else {
                 const refText = displayCount === 1 ? 'reference' : 'references';
-                markdown.appendMarkdown(`$(references) **${displayCount} ${refText}**\n\n`);
+                markdown.appendMarkdown(`**📍 ${displayCount} ${refText}**\n\n`);
                 
                 // Create clickable command link
                 const args = [document.uri, symbol.selectionRange.start, locations];
