@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { ReferenceLensProvider } from './codeLensProvider';
 import { UnusedCodeScanner } from './unusedCodeScanner';
+import { ReferenceHoverProvider } from './hoverProvider';
 
 export function activate(context: vscode.ExtensionContext) {
     console.log('ReferenceX extension is now active');
@@ -16,6 +17,16 @@ export function activate(context: vscode.ExtensionContext) {
             provider
         );
         context.subscriptions.push(disposable);
+    }
+
+    // Register hover provider for supported languages
+    const hoverProvider = new ReferenceHoverProvider();
+    for (const language of languages) {
+        const hoverDisposable = vscode.languages.registerHoverProvider(
+            { language, scheme: 'file' },
+            hoverProvider
+        );
+        context.subscriptions.push(hoverDisposable);
     }
 
     // Listen to document changes to refresh CodeLens

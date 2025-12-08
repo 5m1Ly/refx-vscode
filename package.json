@@ -2,7 +2,7 @@
   "name": "referencex",
   "displayName": "ReferenceX",
   "description": "Shows inline reference counts for TypeScript/JavaScript functions, methods, and classes",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "publisher": "Peckage",
   "icon": "icon.png",
   "repository": {

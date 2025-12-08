@@ -2,6 +2,15 @@
 
 All notable changes to the ReferenceX extension will be documented in this file.
 
+## [0.4.0] - 2025-12-08
+
+### Added
+- **Hover Provider**: Hover over any function, class, method, or interface name to see reference count
+- Clickable "View all references" link in hover tooltip
+- Shows first 5 reference locations directly in the hover
+- Works in both inline and CodeLens modes
+- Provides rich information about unused code when hovering
+
 ## [0.3.1] - 2025-12-08
 
 ### Fixed
